@@ -11,10 +11,9 @@ const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3001;
 
 const MONGO_URL = process.env.MONGO_URL;
-const DB_NAME = process.env.DB_NAME;
+// const DB_NAME = process.env.DB_NAME;
 
-mongoose.connect(`${MONGO_URL}/${DB_NAME}`); 
- 
+mongoose.connect(MONGO_URL);
 
 const bookShop = require("./helper/bookShop.seed ");
 // bookShop(); // called once
@@ -22,12 +21,16 @@ const bookShop = require("./helper/bookShop.seed ");
 const getIndex = require("./controllers/index.controller");
 app.get("/", getIndex);
 
-const {  getBooks,
+const {
+  getBooks,
   createBook,
-  deleteBook } = require("./controllers/book.controller");
+  deleteBook,
+  updateBook,
+} = require("./controllers/book.controller");
 app.get("/books", getBooks);
-app.post('/books', createBook); 
-app.delete('/books/:id', deleteBook); 
+app.post("/books", createBook);
+app.delete("/books/:id", deleteBook);
+app.put("/books/:book_id", updateBook);
 app.get("/test", (request, response) => {
   response.send("test request received");
 });
