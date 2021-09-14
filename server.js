@@ -32,7 +32,7 @@ const {
 app.get("/books", getBooks);
 app.post("/books", createBook);
 app.delete("/books/:id", deleteBook);
-app.put("/books/:book_id", updateBook);
+app.put("/books/:id", updateBook);
 app.get("/test", (request, response) => {
   response.send("test request received");
 });
