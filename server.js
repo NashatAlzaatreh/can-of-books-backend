@@ -14,8 +14,7 @@ const MONGO_URL = process.env.MONGO_URL;
 
 // const DB_NAME = process.env.DB_NAME;
 
-mongoose.connect(`${MONGO_URL}`);
-
+mongoose.connect(MONGO_URL);
 
 const bookShop = require("./helper/bookShop.seed ");
 // bookShop(); // called once
