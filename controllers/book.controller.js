@@ -3,10 +3,11 @@
 const bookModel = require("../models/books.model");
 
 const getBooks = (request, response) => {
-  bookModel.find({email: request.query.email},(error, BooksData) => {
+  bookModel.find({ email: request.query.email }, (error, BooksData) => {
     response.json(BooksData);
   });
 };
+
 const createBook = (request, response) => {
   const { title, description, status, email } = request.body;
 
@@ -23,7 +24,6 @@ const createBook = (request, response) => {
 };
 
 const deleteBook = (request, response) => {
-  console.log(request.params);
   const bookId = request.params.id;
 
   bookModel.deleteOne({ _id: bookId }, (error, deletedData) => {
@@ -34,7 +34,7 @@ const deleteBook = (request, response) => {
 const updateBook = (request, response) => {
   const { title, description, status, email } = request.body;
   const bookId = request.params.id;
-console.log(bookId);
+
   bookModel.findByIdAndUpdate(
     { _id: bookId },
     { title, description, status, email },

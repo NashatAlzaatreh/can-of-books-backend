@@ -14,8 +14,7 @@ const MONGO_URL = process.env.MONGO_URL;
 
 // const DB_NAME = process.env.DB_NAME;
 
-mongoose.connect(`${MONGO_URL}`);
-
+mongoose.connect(MONGO_URL);
 
 const bookShop = require("./helper/bookShop.seed ");
 // bookShop(); // called once
@@ -33,7 +32,6 @@ app.get("/books", getBooks);
 app.post("/books", createBook);
 app.delete("/books/:id", deleteBook);
 app.put("/books/:id", updateBook);
-
 app.get("/test", (request, response) => {
   response.send("test request received");
 });
